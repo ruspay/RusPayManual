@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>RusPay — руководство: как начать работать</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;800&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+@property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+:root{--bg:#060a1c;--card:rgba(19,27,66,.6);--card2:#1f2a66;--blue:#4f8cff;--red:#ff3b5c;--aqua:#5ce1ff;--tx:#f4f6ff;--mu:#8e9bcc;--ok:#2ee6a6;--wa:#ffb547;--ln:rgba(150,170,255,.16);--mx:50vw;--my:30vh;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:24px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.65 "Golos Text",system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3,.dsp{font-family:Unbounded,"Golos Text",sans-serif;font-weight:700;margin:0;letter-spacing:-.01em}
+#bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:radial-gradient(120% 90% at 15% 0%,#12266e 0%,#08102e 52%,#050818 100%)}
+.bd{position:absolute;left:-30%;width:160%;height:24vh;border-radius:999px;filter:blur(46px);opacity:.55;transform:rotate(-14deg)}
+.b1{top:10%;opacity:.28;background:linear-gradient(90deg,transparent,#fff,transparent);animation:sw 19s ease-in-out infinite alternate}
+.b2{top:36%;background:linear-gradient(90deg,transparent,#2f6bff,transparent);animation:sw 25s ease-in-out infinite alternate-reverse}
+.b3{top:62%;background:linear-gradient(90deg,transparent,#ff3b5c,transparent);animation:sw 22s ease-in-out infinite alternate}
+@keyframes sw{from{transform:translateX(-14%) rotate(-16deg) scaleY(.8)}to{transform:translateX(14%) rotate(-11deg) scaleY(1.25)}}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.1) 1px,transparent 1.2px);background-size:30px 30px;-webkit-mask-image:radial-gradient(circle at var(--mx) var(--my),#000,transparent 55%);mask-image:radial-gradient(circle at var(--mx) var(--my),#000,transparent 55%)}
+#bg:after{content:"";position:absolute;inset:0;background:radial-gradient(520px circle at var(--mx) var(--my),rgba(92,225,255,.14),transparent 70%)}
+.rd{position:fixed;top:0;left:0;right:0;height:3px;z-index:60}.rd i{display:block;height:100%;width:0;background:linear-gradient(90deg,#fff,#4f8cff,#ff3b5c);box-shadow:0 0 14px #4f8cff}
+.wrap{position:relative;z-index:2;display:grid;grid-template-columns:268px minmax(0,1fr);gap:40px;max-width:1180px;margin:0 auto;padding:28px 22px 80px}
+.toc{position:sticky;top:24px;align-self:start;display:grid;gap:14px}
+.logo{display:flex;align-items:center;gap:10px}.logo b{font:700 20px Unbounded,sans-serif}.lm{filter:drop-shadow(0 6px 16px rgba(79,140,255,.55))}
+.glass{background:var(--card);backdrop-filter:blur(18px) saturate(140%);border:1px solid var(--ln);border-radius:22px}
+.toc nav{padding:8px;display:grid;gap:2px}
+.toc a{display:flex;gap:10px;align-items:center;color:var(--mu);text-decoration:none;padding:9px 12px;border-radius:12px;font-weight:600;font-size:14px;transition:.25s}
+.toc a i{font:700 11px Unbounded;font-style:normal;width:26px;height:26px;border-radius:9px;background:rgba(79,140,255,.16);display:grid;place-items:center;transition:.25s}
+.toc a:hover{color:#fff;transform:translateX(4px)}.toc a.on{color:#fff;background:linear-gradient(90deg,rgba(79,140,255,.4),rgba(255,59,92,.12));box-shadow:inset 3px 0 var(--aqua)}
+.toc a.on i{background:var(--blue)}.toc a.ok i{background:var(--ok);color:#06201a}
+.prog{padding:16px}.prog small{color:var(--mu)}.prog b{font:700 22px Unbounded}.trk{height:8px;border-radius:6px;background:rgba(7,11,34,.8);margin-top:10px;overflow:hidden}.trk i{display:block;height:100%;width:0;background:linear-gradient(90deg,#fff,#4f8cff,#ff3b5c);transition:width .7s cubic-bezier(.2,.9,.3,1)}
+.hero{position:relative;padding:46px 38px;border-radius:30px;overflow:hidden;background:linear-gradient(135deg,rgba(61,123,255,.4),rgba(255,59,92,.22),rgba(61,123,255,.4));background-size:220% 220%;animation:flow 10s ease infinite;border:1px solid rgba(120,165,255,.4)}
+@keyframes flow{50%{background-position:100% 50%}}
+.hero .lm{animation:bob 3.4s ease-in-out infinite alternate}@keyframes bob{to{transform:translateY(-8px) rotate(4deg)}}
+.tag{display:inline-block;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid var(--ln);font-weight:600;font-size:13px;margin:0 8px 8px 0}
+.hero h1{font-size:clamp(28px,4.6vw,46px);line-height:1.12;margin:18px 0 14px}.hero p{max-width:560px;color:#d5def9;font-size:18px;margin:0 0 20px}
+.go{display:inline-flex;gap:8px;align-items:center;padding:13px 24px;border-radius:16px;font-weight:700;color:#fff;text-decoration:none;position:relative;overflow:hidden;background:linear-gradient(110deg,#3d7bff,#7b5cff 45%,#ff3b5c);background-size:190% 100%;box-shadow:0 12px 30px -12px rgba(79,140,255,.95);transition:.4s}
+.go:hover{background-position:100% 0;transform:translateY(-2px)}
+.go:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.4) 50%,transparent 65%);transform:translateX(-130%)}.go:hover:after{transform:translateX(130%);transition:transform .8s}
+.steps{position:relative;margin-top:44px;display:grid;gap:26px}.steps:before{content:"";position:absolute;left:27px;top:20px;bottom:20px;width:2px;background:linear-gradient(#fff,#4f8cff,#ff3b5c);opacity:.35}
+.step{position:relative;display:grid;grid-template-columns:56px 1fr;gap:18px}
+.num{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;font:700 18px Unbounded;background:linear-gradient(135deg,#4f8cff,#7b5cff);box-shadow:0 10px 26px -8px rgba(79,140,255,.9);position:relative;z-index:1;transition:.4s}
+.step.done .num{background:linear-gradient(135deg,#2ee6a6,#4f8cff);color:#06201a}
+.sc{padding:26px 28px;transition:transform .3s,border-color .3s,box-shadow .3s}.sc:hover{transform:translateY(-3px);border-color:rgba(120,165,255,.5);box-shadow:0 20px 44px -22px rgba(79,140,255,.8)}
+.step.done .sc{border-color:rgba(46,230,166,.45)}
+.sc h2{font-size:21px;margin-bottom:6px}.sc>p{color:#c8d2f3;margin:6px 0 14px}
+.path{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:12px 0}
+.k{background:rgba(31,42,102,.8);border:1px solid var(--ln);border-bottom-width:3px;padding:3px 12px;border-radius:10px;font-weight:700;font-size:14px}.k.hot{background:linear-gradient(135deg,#3d7bff,#7b5cff);border-color:transparent}.path em{color:var(--aqua);font-style:normal}
+.ls{list-style:none;padding:0;margin:12px 0;counter-reset:n;display:grid;gap:9px}
+.ls li{counter-increment:n;position:relative;padding-left:38px}.ls li:before{content:counter(n);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:rgba(79,140,255,.2);border:1px solid rgba(79,140,255,.5);display:grid;place-items:center;font:700 12px Unbounded}
+.note{padding:12px 16px;border-radius:14px;margin:14px 0;font-size:14.5px;border:1px solid}.note.warn{background:rgba(255,181,71,.12);border-color:rgba(255,181,71,.4);color:#ffd49a}.note.tip{background:rgba(92,225,255,.1);border-color:rgba(92,225,255,.35);color:#bdf0ff}.note.bad{background:rgba(255,92,108,.12);border-color:rgba(255,92,108,.4);color:#ffb3bb}
+.mock{margin:14px 0;padding:16px;border-radius:18px;background:rgba(5,8,24,.7);border:1px dashed rgba(120,165,255,.35);display:grid;gap:9px;max-width:380px}
+.mock b{font:700 14px Unbounded}.fi{height:34px;border-radius:11px;background:rgba(31,42,102,.6);border:1px solid var(--ln);padding:6px 12px;color:var(--mu);font-size:13px;position:relative;overflow:hidden}
+.fi:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(92,225,255,.18),transparent 70%);animation:sh 3s infinite}@keyframes sh{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.mb{height:36px;border-radius:12px;background:linear-gradient(110deg,#3d7bff,#ff3b5c);display:grid;place-items:center;font-weight:700;font-size:14px}
+.sw{width:46px;height:26px;border-radius:13px;background:var(--ok);position:relative;display:inline-block;vertical-align:middle;box-shadow:0 0 18px -2px rgba(46,230,166,.7)}.sw:after{content:"";position:absolute;top:3px;left:23px;width:20px;height:20px;border-radius:50%;background:#fff;animation:tg 3s ease-in-out infinite}@keyframes tg{40%,60%{left:3px}}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0}.st{padding:4px 12px;border-radius:20px;font-size:13px;font-weight:700}
+.s-new{background:rgba(92,225,255,.15);color:var(--aqua)}.s-work{background:rgba(255,181,71,.15);color:var(--wa)}.s-ok{background:rgba(46,230,166,.15);color:var(--ok)}.s-rej{background:rgba(255,92,108,.15);color:#ff7b89}
+.done-l{display:inline-flex;align-items:center;gap:10px;margin-top:8px;cursor:pointer;font-weight:600;color:var(--mu);user-select:none}
+.done-l input{appearance:none;width:24px;height:24px;border-radius:8px;border:2px solid var(--mu);display:grid;place-items:center;cursor:pointer;transition:.3s}
+.done-l input:checked{background:var(--ok);border-color:var(--ok);transform:scale(1.1)}.done-l input:checked:after{content:"✓";color:#06201a;font-weight:800}.done-l:has(input:checked){color:var(--ok)}
+h3.sec{font-size:22px;margin:56px 0 18px}
+.tbl{display:grid;gap:10px}.tr{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:14px 18px;align-items:center}
+details{padding:0;margin-bottom:10px;overflow:hidden}summary{cursor:pointer;padding:16px 22px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font:700 22px Unbounded;color:var(--aqua);transition:transform .3s}details[open] summary:after{transform:rotate(45deg)}details p{margin:0;padding:0 22px 18px;color:#c8d2f3;animation:fd .4s}@keyframes fd{from{opacity:0;transform:translateY(-6px)}}
+.fin{margin-top:50px;padding:34px;text-align:center;display:none}.fin.show{display:block;animation:pop .6s cubic-bezier(.2,1.2,.3,1)}@keyframes pop{from{opacity:0;transform:scale(.9)}}
+.fin h2{font-size:24px;margin-bottom:8px;background:linear-gradient(90deg,#fff,var(--ok));-webkit-background-clip:text;background-clip:text;color:transparent}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s cubic-bezier(.2,.9,.3,1)}.rv.in{opacity:1;transform:none}
+@media(max-width:900px){.wrap{grid-template-columns:1fr;gap:20px;padding-top:16px}.toc{position:static}.toc nav{grid-auto-flow:column;overflow-x:auto;grid-auto-columns:max-content}.hero{padding:30px 22px}.tr{grid-template-columns:1fr}.step{grid-template-columns:44px 1fr;gap:12px}.num{width:44px;height:44px;font-size:15px;border-radius:14px}.steps:before{left:21px}.sc{padding:20px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="bg"><i class="bd b1"></i><i class="bd b2"></i><i class="bd b3"></i><i class="dots"></i></div>
+<div class="rd"><i id="rd"></i></div>
+<div class="wrap">
+<aside class="toc">
+ <div class="logo"><svg class="lm" width="38" height="38" viewBox="0 0 40 40"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f8cff"/><stop offset=".55" stop-color="#7b5cff"/><stop offset="1" stop-color="#ff3b5c"/></linearGradient></defs><rect width="40" height="40" rx="12" fill="url(#lg)"/><path fill-rule="evenodd" fill="#fff" d="M12 30V10h9.5a6 6 0 0 1 1.6 11.8L29 30h-5.6l-5-7.6h-.9V30zM17.5 15v4.4h4a2.2 2.2 0 0 0 0-4.4z"/></svg><b>RusPay</b></div>
+ <nav class="glass" id="nav">
+  <a href="#s1"><i>1</i>Вход в панель</a><a href="#s2"><i>2</i>Реквизиты</a><a href="#s3"><i>3</i>Приём платежей</a><a href="#s4"><i>4</i>Пополнение депозита</a><a href="#s5"><i>5</i>Работа со сделками</a><a href="#s6"><i>6</i>Вывод средств</a><a href="#faq"><i>?</i>Вопросы и ответы</a>
+ </nav>
+ <div class="glass prog"><small>Ваш прогресс</small><div><b id="pc">0</b> <small>из 6 шагов</small></div><div class="trk"><i id="tk"></i></div></div>
+</aside>
+
+<main>
+ <section class="hero">
+  <span class="tag">6 шагов</span><span class="tag">около 5 минут</span><span class="tag">для новичков</span>
+  <h1>Как начать работать в RusPay</h1>
+  <p>Пошаговое руководство: от первого входа и добавления реквизитов до пополнения депозита и вывода заработанных средств.</p>
+  <a class="go" href="#s1">Начать →</a>
+ </section>
+
+ <div class="steps">
+  <section class="step rv" id="s1"><div class="num">01</div><div class="sc glass">
+   <h2>Войдите в панель</h2>
+   <p>Откройте сайт, введите логин (от 3 символов) и пароль (от 6 символов) и нажмите кнопку входа.</p>
+   <div class="path"><span class="k">Логин</span><em>+</em><span class="k">Пароль</span><em>→</em><span class="k hot">Войти</span><em>→</em><span class="k hot">Перейти в рабочую панель</span></div>
+   <div class="note tip"><b>Подсказка.</b> Кнопка «Показать» рядом с паролем помогает проверить, что вы ввели его без опечаток.</div>
+   <label class="done-l"><input type="checkbox" data-s="1">Я вошёл в панель</label>
+  </div></section>
+
+  <section class="step rv" id="s2"><div class="num">02</div><div class="sc glass">
+   <h2>Добавьте реквизиты</h2>
+   <p>Реквизиты — это банковские карты, на которые будут поступать платежи. Без хотя бы одного активного реквизита трафик не запустить.</p>
+   <div class="path"><span class="k">Реквизиты</span><em>→</em><span class="k hot">Добавить реквизит</span></div>
+   <ol class="ls">
+    <li><b>ФИО держателя.</b> Укажите минимум имя и фамилию, например «Иван Петров».</li>
+    <li><b>Банк.</b> Выберите группу («Крупнейшие», «Онлайн-банки», «Другие») или найдите свой через строку поиска: Сбербанк, ВТБ, Т-Банк, Альфа-Банк и другие.</li>
+    <li><b>Номер карты.</b> 16 цифр. Пробелы между четвёрками поставятся сами.</li>
+    <li>Нажмите <span class="k hot">Сохранить</span>. Реквизит сразу станет активным.</li>
+   </ol>
+   <div class="mock"><b>Добавить реквизит</b><div class="fi">Иван Петров</div><div class="fi">Сбербанк</div><div class="fi">2202 •••• •••• 1234</div><div class="mb">Сохранить</div></div>
+   <div class="note tip"><b>Безопасно.</b> CVV, PIN-код и коды из СМС не запрашиваются. Если их просят, это не RusPay.</div>
+   <label class="done-l"><input type="checkbox" data-s="2">Реквизит добавлен</label>
+  </div></section>
+
+  <section class="step rv" id="s3"><div class="num">03</div><div class="sc glass">
+   <h2>Включите приём платежей</h2>
+   <p>В верхней панели справа находится переключатель <span class="sw"></span>. Когда он зелёный, вы принимаете платежи. Выключите его, если нужна пауза.</p>
+   <div class="note warn">Пока приём выключен, пополнить депозит нельзя. Панель сама предложит включить его, когда вы будете пополнять баланс.</div>
+   <label class="done-l"><input type="checkbox" data-s="3">Приём включён</label>
+  </div></section>
+
+  <section class="step rv" id="s4"><div class="num">04</div><div class="sc glass">
+   <h2>Пополните депозит</h2>
+   <p>Депозит нужен для работы со сделками. Пополнение делается в USDT по сети TRON (TRC-20).</p>
+   <div class="path"><span class="k">Финансы</span><em>→</em><span class="k hot">Пополнить депозит</span></div>
+   <ol class="ls">
+    <li>Введите сумму. <b>Минимальное пополнение — $200.</b></li>
+    <li>Нажмите <span class="k">Копировать</span> рядом с адресом кошелька.</li>
+    <li>В своём криптокошельке отправьте USDT на этот адрес в сети <b>TRC-20</b>.</li>
+    <li>Вернитесь в RusPay и нажмите <span class="k hot">Перейти к проверке</span>. Мы посмотрим в блокчейне, пришёл ли перевод.</li>
+   </ol>
+   <div class="mock"><b>Пополнить депозит</b><div class="fi">Сумма: 200 USDT</div><div class="fi">TRON (TRC-20)</div><div class="fi">Адрес кошелька  ·  Копировать</div><div class="mb">Перейти к проверке</div></div>
+   <div class="note bad"><b>Важно.</b> Отправляйте только USDT и только по сети TRC-20. Перевод в другой сети приведёт к потере средств: транзакции в блокчейне необратимы.</div>
+   <label class="done-l"><input type="checkbox" data-s="4">Депозит пополнен</label>
+  </div></section>
+
+  <section class="step rv" id="s5"><div class="num">05</div><div class="sc glass">
+   <h2>Работайте со сделками</h2>
+   <p>Новые сделки приходят в раздел «Сделки». Каждая проходит несколько статусов:</p>
+   <div class="flow"><span class="st s-new">Новая</span>→<span class="st s-work">В работе</span>→<span class="st s-ok">Успешная</span><span style="color:var(--mu);margin:0 4px">или</span><span class="st s-rej">Отклонённая</span></div>
+   <div class="path"><span class="k">Сделки</span><em>→</em><span class="k hot">Взять в работу</span><em>→</em><span class="k hot">Подтвердить пополнение</span></div>
+   <ol class="ls">
+    <li>Когда появилась новая сделка, нажмите <span class="k hot">Взять в работу</span>.</li>
+    <li>Убедитесь, что деньги пришли на ваш реквизит, и нажмите <span class="k hot">Подтвердить пополнение</span>.</li>
+    <li>Если платёж не поступил или что-то не так, нажмите <span class="k">Отклонить</span>.</li>
+   </ol>
+   <div class="note tip"><b>Заработок.</b> С каждой успешной сделки считается прибыль: комиссия составляет 12%. Оборот и прибыль видны на «Дашборде» и в «Финансах» за сегодня, 7 и 30 дней или за свой период.</div>
+   <label class="done-l"><input type="checkbox" data-s="5">Я разобрался со сделками</label>
+  </div></section>
+
+  <section class="step rv" id="s6"><div class="num">06</div><div class="sc glass">
+   <h2>Выведите средства</h2>
+   <p>Заработанное можно вывести на свой криптокошелёк в USDT.</p>
+   <div class="path"><span class="k">Финансы</span><em>→</em><span class="k hot">Вывод средств</span></div>
+   <ol class="ls">
+    <li>Вставьте адрес своего кошелька USDT в сети TRON: он начинается с буквы <b>T</b> и содержит 34 символа.</li>
+    <li>Введите сумму или нажмите <span class="k">Всё</span>, чтобы вывести весь доступный баланс.</li>
+    <li>Проверьте адрес ещё раз и нажмите <span class="k hot">Вывести средства</span>.</li>
+   </ol>
+   <div class="note warn">Вывести больше, чем есть на балансе, нельзя. Если баланс нулевой, форма вывода заблокирована, пока вы не пополните депозит.</div>
+   <label class="done-l"><input type="checkbox" data-s="6">Я знаю, как выводить</label>
+  </div></section>
+ </div>
+
+ <h3 class="sec rv">Что значат статусы сделок</h3>
+ <div class="tbl rv">
+  <div class="glass tr"><span class="st s-new" style="justify-self:start">Новая</span><span>Сделка только что появилась. Её ещё никто не взял в работу.</span></div>
+  <div class="glass tr"><span class="st s-work" style="justify-self:start">В работе</span><span>Вы взяли сделку. Теперь ждёте поступления денег на реквизит.</span></div>
+  <div class="glass tr"><span class="st s-ok" style="justify-self:start">Успешная</span><span>Пополнение подтверждено. Сумма идёт в оборот, с неё считается прибыль.</span></div>
+  <div class="glass tr"><span class="st s-rej" style="justify-self:start">Отклонённая</span><span>Сделка закрыта без оплаты. В оборот и прибыль не попадает.</span></div>
+ </div>
+
+ <h3 class="sec rv" id="faq">Вопросы и ответы</h3>
+ <div class="rv">
+  <details class="glass"><summary>Можно ли добавить несколько реквизитов?</summary><p>Да. Добавляйте сколько нужно, а ненужные отключайте или удаляйте в разделе «Реквизиты». Платежи распределяются по активным.</p></details>
+  <details class="glass"><summary>Сколько нужно пополнить, чтобы начать?</summary><p>Минимальная сумма пополнения депозита — $200 в USDT по сети TRC-20.</p></details>
+  <details class="glass"><summary>Перевод отправил, а система пишет, что транзакция не найдена</summary><p>Подождите несколько минут: в блокчейне перевод должен получить подтверждения. Затем нажмите «Проверить снова». Проверьте, что отправили именно USDT в сети TRC-20 на скопированный адрес.</p></details>
+  <details class="glass"><summary>Почему не получается вывести средства?</summary><p>Либо на балансе нет денег, либо сумма больше доступной, либо адрес указан неверно. Адрес TRON начинается с буквы T и состоит из 34 символов.</p></details>
+  <details class="glass"><summary>Почему не открывается пополнение депозита?</summary><p>Скорее всего, выключен приём платежей. Включите переключатель в верхней панели справа или согласитесь на предложение панели.</p></details>
+ </div>
+
+ <section class="fin glass" id="fin"><h2>Всё готово!</h2><p style="color:#c8d2f3;margin:0 0 18px">Вы прошли все шаги и можете спокойно работать в RusPay.</p><a class="go" href="#s1">Вернуться к началу ↑</a></section>
+</main>
+</div>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+let st={};try{st=JSON.parse(localStorage.getItem('rp_manual'))||{}}catch(e){}
+const save=()=>{try{localStorage.setItem('rp_manual',JSON.stringify(st))}catch(e){}};
+function upd(){const n=Object.values(st).filter(Boolean).length;$('#pc').textContent=n;$('#tk').style.width=n/6*100+'%';
+ $$('.step').forEach(s=>s.classList.toggle('done',!!st[s.id.slice(1)]));
+ $$('#nav a').forEach(a=>a.classList.toggle('ok',!!st[a.getAttribute('href').slice(2)]&&a.getAttribute('href')[1]=='s'));
+ $('#fin').classList.toggle('show',n===6)}
+$$('[data-s]').forEach(c=>{c.checked=!!st[c.dataset.s];c.onchange=()=>{st[c.dataset.s]=c.checked;save();upd();if(c.checked){const nx=$('#s'+(+c.dataset.s+1));if(nx&&!st[+c.dataset.s+1])setTimeout(()=>nx.scrollIntoView({behavior:'smooth',block:'center'}),450)}}});
+upd();
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});$$('.rv').forEach(e=>io.observe(e));
+const secs=$$('.step,#faq'),links=$$('#nav a');
+function spy(){const h=document.documentElement,p=scrollY/(h.scrollHeight-innerHeight||1);$('#rd').style.width=p*100+'%';
+ let cur=null;secs.forEach(s=>{if(s.getBoundingClientRect().top<innerHeight*.4)cur=s.id});
+ links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))}
+addEventListener('scroll',spy,{passive:true});spy();
+addEventListener('pointermove',e=>{const b=document.body.style;b.setProperty('--mx',e.clientX+'px');b.setProperty('--my',e.clientY+'px')},{passive:true});
+</script>
+</body>
+</html>
